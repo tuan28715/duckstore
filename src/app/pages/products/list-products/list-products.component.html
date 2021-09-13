@@ -1,0 +1,33 @@
+<div class = "products">
+    <div class = "container">
+        <h1 class = "lg-title">Welcome to Ducks Store</h1>
+        <p class = "text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur quos sit consectetur, ipsa voluptatem vitae necessitatibus dicta veniam, optio, possimus assumenda laudantium. Temporibus, quis cum.</p>
+  
+        <div  class = "product-items">
+            <!-- single product -->
+            <div *ngFor="let product of products" class = "product">
+                <div   class = "product-content">
+                    <div class = "product-img">
+                        <img src="{{product.thumbnail_url}}" alt="{{product.name}}">
+                    </div>
+                    <div class = "product-btns">
+                        <button (click)="addCart(product.productId)" type = "button" class = "btn-cart"> add to cart
+                            <span><i class = "fas fa-plus"></i></span>
+                        </button>
+                        <button type = "button" class = "btn-buy"> buy now
+                            <span><i class = "fas fa-shopping-cart"></i></span>
+                        </button>
+                    </div>
+                </div>
+  
+                <div class = "product-info">
+                    <a href = "#" class = "product-name">{{product.name}}</a>
+                    <p class = "product-price">{{product.newPrice}} VNĐ</p>
+                    <p class = "product-price">{{product.newPriceList}} VNĐ</p>
+                </div>
+            </div>
+            <!-- end of single product -->
+        </div>
+    </div>
+  </div>
+  
