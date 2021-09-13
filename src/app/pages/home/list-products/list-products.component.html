@@ -1,10 +1,20 @@
+<div style="margin-top: 50px;" >
+    <app-progessbar *ngIf="!products"></app-progessbar>
+</div>
 <div class = "products">
     <div class = "container">
         <h1 class = "lg-title">Welcome to Ducks Store</h1>
         <p class = "text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur quos sit consectetur, ipsa voluptatem vitae necessitatibus dicta veniam, optio, possimus assumenda laudantium. Temporibus, quis cum.</p>
-  
+        <mat-paginator 
+            *ngIf="products"
+            [length]="100"
+            [pageSize]="10"
+            [pageSizeOptions]="[5, 10, 25, 100]"
+            aria-label="Select page"
+            (page)="pageEvent = getServerData($event)"
+            >
+        </mat-paginator>
         <div  class = "product-items">
-            <!-- single product -->
             <div *ngFor="let product of products" class = "product">
                 <div   class = "product-content">
                     <div class = "product-img">
@@ -26,7 +36,6 @@
                     <p class = "product-price">{{product.newPriceList}} VNĐ</p>
                 </div>
             </div>
-            <!-- end of single product -->
         </div>
     </div>
   </div>

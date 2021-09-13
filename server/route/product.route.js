@@ -20,7 +20,8 @@ router.get('/getall', async (req, res)=>{
     snapshot.forEach(doc => {
         products.push(doc.data());
     });
-    res.send(products)
+    // res.setTimeout(5000, () => res.send(products));
+    res.send(products);
 })
 router.post('/create', async (req, res)=>{
     const {name, brand_name, short_description, price, list_price, discount, rating_average, review_count, order_count, favourite_count,stock_item, thumbnail_url,option_color,quantity_sold} = req.body;
