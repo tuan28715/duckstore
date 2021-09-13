@@ -2,14 +2,15 @@ const express = require('express');
 const server = express(); 
 const cors = require('cors');
 server.use(express.json());
-server.use(cors());
 
-//route
-const productRoute = require('./server/route/product.route');
-server.use('/api/product', productRoute);
+server.use(cors())
 
-//angular
+// Serve only the static files form the dist directory
 server.use(express.static(__dirname + '/dist/store'));
+
+server.get('/', function(req,res) {
+  res.sendFile(path.join(__dirname+'/dist/store/index.html'));
+});
 
 server.get('/', (req,res,next) => {
     res.sendFile(path.join(__dirname + '/dist/store/index.html'));
