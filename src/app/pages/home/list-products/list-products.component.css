@@ -111,11 +111,11 @@ img{
     margin: 2rem;
     position: relative;
 }
-.product-content{
+/* .product-content{
     background: var(--gray);
     padding: 3rem 0.5rem 2rem 0.5rem;
     cursor: pointer;
-}
+} */
 .product-img{
     background: var(--white-light);
     box-shadow: 0 0 20px 10px var(--white-light);
