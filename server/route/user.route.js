@@ -6,34 +6,42 @@ const router = app.Router();
 router.post('/register', async (req, res) => {
     const { email, password, username } = req.body;
     try {
-        const document = db.collection('users').doc();
-        const userRef = db.collection('users');
-        const snapshot = await userRef.get();
-        snapshot.forEach(doc => {
-            let check = doc.data().username
-            if (check == username) {
-                res.send(`user ${username} is already exits !`)
-                return;
-            } else {
-                const documentUuid = document.id;
-                document.set({
-                    uuid: documentUuid,
-                    username: username,
-                    password: password,
-                    email:email
-                });
-                res.send(`created ${username}`)
-                return;
-            }
-        });
+        const usersRef = db.collection('users').doc(username)
+        const doc = await usersRef.get();
+        if (!doc.exists) {
+            await db.collection('users').doc(username).set({
+                email,
+                password,
+                username
+            });
+            res.status(200).send({ message: ` created ${username}`})
+        } else {
+            res.status(400).send({ message: `${username} is already exits !`})
+        }      
     } catch (err) {
-        res.status(300);
+        res.status(400);
         console.error(err);
     }
 });
 
-router.get('/login', async (req, res) => {
-
+router.post('/login', async (req, res) => {
+    const {username, password} = req.body;
+    try {
+        const usersRef = db.collection('users').doc(username)
+        const doc = await usersRef.get();
+        if(!doc.exists){
+            res.status(400).send({ message: `${username} does not exist !`})
+        }else{
+            if(doc.data().password === password){
+                res.status(200).send(doc.data());
+            }else{
+                res.status(400).send({message:`wrong password !`})
+            }
+        }
+    } catch (err) {
+        res.status(400);
+        console.error(err);
+    }
 })
 
 module.exports = router;

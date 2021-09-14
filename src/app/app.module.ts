@@ -13,6 +13,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './shared/login/login.component';
 import { RegisterComponent } from './shared/register/register.component';
 import { AlertComponent } from './shared/alert/alert.component';
+import { BadalertComponent } from './shared/badalert/badalert.component';
+import { AlertLoginComponent } from './shared/alert-login/alert-login.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { AlertComponent } from './shared/alert/alert.component';
     HeaderComponent,
     LoginComponent,
     RegisterComponent,
-    AlertComponent
+    AlertComponent,
+    BadalertComponent,
+    AlertLoginComponent
   ],
   imports: [
     BrowserModule,

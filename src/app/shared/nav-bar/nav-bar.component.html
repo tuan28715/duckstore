@@ -12,12 +12,20 @@
             <span routerLink="" >Ducks Store</span>
         </div>
         <div class="cate">
-          <div style="color: orange;" class="labell">
+          <div *ngIf="!username" style="color: orange;" class="labell">
             <span routerLink="/login" class="action" >
               <app-login></app-login>
             </span>
             <span routerLink="/register" class="action" style="margin-left: 30px;" >
               <app-register></app-register>
+            </span>
+          </div>
+          <div *ngIf="username" style="color: orange;" class="labell">
+            <span routerLink="/login" class="action" >
+              <a>{{username}}</a>
+            </span>
+            <span routerLink="/register" class="action" style="margin-left: 30px;" >
+              <a (click)="logout()" >Logout</a>
             </span>
           </div>
         </div>
