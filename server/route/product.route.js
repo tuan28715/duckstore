@@ -3,7 +3,7 @@ const db = require('../database/firebase')
 const router = app.Router();
 
 router.get('/get', async (req, res)=>{
-    const {id} = req.body;
+    const {id} = req.query;
     const product = db.collection('products').doc(id);
     const doc = await product.get();
     if (!doc.exists) {
@@ -12,7 +12,6 @@ router.get('/get', async (req, res)=>{
         res.send(doc.data());
     }
 })
-
 router.get('/getall', async (req, res)=>{
     const products = [];
     const citiesRef = db.collection('products');

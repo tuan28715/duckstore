@@ -11,6 +11,10 @@ export class ProductService {
 
   constructor(private HttpClient:HttpClient) { }
 
+  getOne(id:any): Observable<Product>{
+    return this.HttpClient.get<Product>(PRODUCT_API_URL + 'get?id=' + id);
+  }
+
   getAll(): Observable<Product>{
     return this.HttpClient.get<Product>(PRODUCT_API_URL + 'getall');
   }

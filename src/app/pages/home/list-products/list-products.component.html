@@ -27,7 +27,7 @@
                     </div> -->
                 </div>
                 <div class = "product-info">
-                    <a href = "#" class = "product-name">{{product.name}}</a>
+                    <a [routerLink]='["/detail/product/" + product.uuid]' class = "product-name">{{product.name}}</a>
                     <div style="margin-top:5px" >
                         <ngb-rating [rate]= product.rating_average ></ngb-rating> <br>
                     </div>

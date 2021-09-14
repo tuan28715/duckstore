@@ -30,7 +30,7 @@ import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
     NgbPaginationModule,NgbAlertModule
   ],
   exports:[
-    ProgessbarComponent,
+    ProgessbarComponent,RatingComponent
   ],
   bootstrap:[ProductsComponent]
 })
