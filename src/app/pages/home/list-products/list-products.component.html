@@ -1,23 +1,25 @@
-<div style="margin-top: 50px;" >
-    <app-progessbar *ngIf="!products"></app-progessbar>
-</div>
-<div class = "products">
-    <div class = "container">
-        <h1 class = "lg-title">Welcome to Ducks Store</h1>
-        <mat-paginator 
-            *ngIf="products"
-            [length]="products.length"
-            [pageSize]="10"
-            [pageSizeOptions]="[5, 10, products.length]"
-        >
-        </mat-paginator>
-        <div  class = "product-items">
-            <div *ngFor="let product of products" class = "product"  >
-                <div   class = "product-content">
-                    <div class = "product-img">
-                        <img src="{{product.thumbnail_url}}" alt="{{product.name}}">
-                    </div>
-                    <!-- <div class = "product-btns">
+
+<div class="products">
+  <div class="container">
+    <h1 class="lg-title">Welcome to Ducks Store</h1>
+    <div style="margin-top: 50px">
+        <app-progessbar *ngIf="!products"></app-progessbar>
+      </div>
+    <span *ngIf="products" >
+      <mat-paginator
+        *ngIf="products"
+        [length]="products.length"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, products.length]"
+      >
+      </mat-paginator>
+      <div class="product-items">
+        <div *ngFor="let product of products" class="product">
+          <div class="product-content">
+            <div class="product-img">
+              <img src="{{ product.thumbnail_url }}" alt="{{ product.name }}" />
+            </div>
+            <!-- <div class = "product-btns">
                         <button (click)="addCart(product.productId)" type = "button" class = "btn-cart"> add to cart
                             <span><i class = "fas fa-plus"></i></span>
                         </button>
@@ -25,17 +27,23 @@
                             <span><i class = "fas fa-shopping-cart"></i></span>
                         </button>
                     </div> -->
-                </div>
-                <div class = "product-info">
-                    <a [routerLink]='["/detail/product/" + product.uuid]' class = "product-name">{{product.name}}</a>
-                    <div style="margin-top:5px" >
-                        <ngb-rating [rate]= product.rating_average ></ngb-rating> <br>
-                    </div>
-                    <p style="display: none;" class = "product-price">{{product.newPrice}} VNĐ</p>
-                    <p class = "product-price">{{product.newPriceList}} VNĐ</p>
-                </div>
+          </div>
+          <div class="product-info">
+            <a
+              [routerLink]="['/detail/product/' + product.uuid]"
+              class="product-name"
+              >{{ product.name }}</a
+            >
+            <div style="margin-top: 5px">
+              <ngb-rating [rate]="product.rating_average"></ngb-rating> <br />
             </div>
+            <p style="display: none" class="product-price">
+              {{ product.newPrice }} VNĐ
+            </p>
+            <p class="product-price">{{ product.newPriceList }} VNĐ</p>
+          </div>
         </div>
-    </div>
+      </div>
+    </span>
   </div>
-  
+</div>
