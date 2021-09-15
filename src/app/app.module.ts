@@ -15,7 +15,7 @@ import { RegisterComponent } from './shared/register/register.component';
 import { AlertComponent } from './shared/alert/alert.component';
 import { BadalertComponent } from './shared/badalert/badalert.component';
 import { AlertLoginComponent } from './shared/alert-login/alert-login.component';
-
+import {MatIconModule} from '@angular/material/icon';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +36,8 @@ import { AlertLoginComponent } from './shared/alert-login/alert-login.component'
     BrowserAnimationsModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatIconModule
   ],
   exports:[
     // RatingComponent

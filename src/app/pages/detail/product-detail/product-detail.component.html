@@ -30,10 +30,14 @@
     type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
   />
-  <div class="pd-wrap">
+  <div style="margin-top: 30px" class="pd-wrap">
     <div class="container">
-      <!-- <div class="heading-section">
-      <h2>Product Details</h2>
+      <a style="color: black" routerLink="/">Home</a>
+      >
+      <a style="color: black" routerLink="/">{{ data.brand_name }}</a>
+      >
+      <a style="color: black" routerLink="/">{{ data.name }}</a>
+      <!-- <div style="float:left;" class="heading-section">
     </div> -->
       <div style="margin-top: 50px" class="row">
         <div class="col-md-6">
@@ -53,46 +57,48 @@
           <div class="product-dtl">
             <div class="product-info">
               <div class="product-name">{{ data.name }}</div>
-              <div class="reviews-counter">
+              <div style="margin-top: 10px" class="reviews-counter">
                 <app-rating></app-rating> |
                 <span>{{ data.favourite_count }} Likes</span>
               </div>
-              <div class="product-price-discount">
+              <div class="product-price-discount" style="margin-top: 5px">
                 <span>{{ data.newPrice }}đ</span
                 ><span class="line-through">{{ data.newPriceList }}đ</span>
               </div>
             </div>
-            <p>
+            <p style="margin-top: 5px">
               {{ data.short_description }}
             </p>
-            <div class="row">
-              <div class="col-md-6">
-                <label for="size">Size</label>
-                <select id="size" name="size" class="form-control">
-                  <option>S</option>
-                  <option>M</option>
-                  <option>L</option>
-                  <option>XL</option>
-                </select>
+            <span *ngIf="_user" >
+              <div class="row">
+                <!-- <div class="col-md-6">
+                  <label for="size">Size</label>
+                  <select id="size" name="size" class="form-control">
+                    <option>S</option>
+                    <option>M</option>
+                    <option>L</option>
+                    <option>XL</option>
+                  </select>
+                </div> -->
+                <div class="col-md-6">
+                  <label for="color">Choose Color</label>
+                  <select id="color" name="color" class="form-control">
+                    <option *ngFor="let option of data.option_color">
+                      {{ option.display_name }}
+                    </option>
+                  </select>
+                </div>
               </div>
-              <div class="col-md-6">
-                <label for="color">Color</label>
-                <select id="color" name="color" class="form-control">
-                  <option>Blue</option>
-                  <option>Green</option>
-                  <option>Red</option>
-                </select>
+              <div class="product-count">
+                <!-- <label for="size">Quantity</label>
+                <form action="#" class="display-flex">
+                  <div class="qtyminus">-</div>
+                  <input type="text" name="quantity" value="1" class="qty" />
+                  <div class="qtyplus">+</div>
+                </form> -->
+                <button (click)="addToCart(data)"  class="round-black-btn">Add to Cart</button>
               </div>
-            </div>
-            <div class="product-count">
-              <label for="size">Quantity</label>
-              <form action="#" class="display-flex">
-                <div class="qtyminus">-</div>
-                <input type="text" name="quantity" value="1" class="qty" />
-                <div class="qtyplus">+</div>
-              </form>
-              <a href="#" class="round-black-btn">Add to Cart</a>
-            </div>
+            </span>
           </div>
         </div>
       </div>

@@ -412,4 +412,6 @@ content{
     clear: both;
     display: table;
   }
-  
+#search-addon:hover{
+  cursor: pointer;
+}

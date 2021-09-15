@@ -11,6 +11,13 @@
         <div class="logoo">
             <span routerLink="" >Ducks Store</span>
         </div>
+        <div style="width: 30%;" class="input-group rounded">
+          <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+            aria-describedby="search-addon" />
+          <span class="input-group-text border-0" id="search-addon">
+            <mat-icon>search</mat-icon>
+          </span>
+        </div>
         <div class="cate">
           <div *ngIf="!username" style="color: orange;" class="labell">
             <span routerLink="/login" class="action" >

@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../../../models/product.model';
 import { convertPrice } from '../../../shared/convertprice'
+import { User } from '../../../models/user.model'
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -15,10 +16,17 @@ export class ProductDetailComponent implements OnInit {
   queryProduct:any;
   public data: Product;
   product:any;
+  public user : User;
+  public _user = localStorage.getItem('username');
   ngOnInit(): void {
     this.queryProduct = this.ActivatedRoute.snapshot.params['id'];
     this.get();
   }
+
+  async addToCart(product:any){
+    console.log({user : this._user, product: product, quantity: 1});
+  }
+
   async get(){
     await this.ProductService.getOne(this.queryProduct).subscribe(data=>{
       this.data = data;

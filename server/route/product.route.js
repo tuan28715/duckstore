@@ -12,6 +12,10 @@ router.get('/get', async (req, res)=>{
         res.send(doc.data());
     }
 })
+router.get('/search', async (req, res)=>{
+    const { query } = req.query;
+    
+})
 router.get('/getall', async (req, res)=>{
     const products = [];
     const citiesRef = db.collection('products');
